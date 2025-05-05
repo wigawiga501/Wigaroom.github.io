@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Image Uploader</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    input {
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>WigaRoom - 이미지 추가</h1>
+  <p>이미지 주소(URL)를 입력하면, 복사 가능한 코드가 생성돼요.</p>
+
+  <form onsubmit="addImage(); return false;">
+    <input type="text" id="imgUrl" placeholder="이미지 주소 붙여넣기" />
+    <br/>
+    <button type="submit">코드 만들기</button>
+  </form>
+
+  <textarea id="result" placeholder="여기에 코드가 생깁니다" readonly></textarea>
+
+  <script>
+    function addImage() {
+      const url = document.getElementById("imgUrl").value;
+      const resultArea = document.getElementById("result");
+      if (!url) {
+        resultArea.value = "이미지 주소를 입력해주세요.";
+        return;
+      }
+      const code = `<img src="${url}" style="max-width: 100%;" />`;
+      resultArea.value = code;
+    }
+  </script>
+</body>
+</html>
